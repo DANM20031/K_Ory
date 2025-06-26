@@ -115,3 +115,49 @@ function cargarMapa() {
 }
 
 document.addEventListener("DOMContentLoaded", cargarMapa);
+
+const imagenesPorDestino = {
+  "cabo": [
+    "images/cabo1.jpg",
+    "images/cabo2.jpg",
+    "images/cabo3.jpg",
+    "images/cabo4.jpg"
+  ],
+  "palomino": [
+    "images/palomino1.jpg",
+    "images/palomino2.jpg",
+    "images/palomino3.jpg",
+    "images/palomino4.jpg"
+  ],
+  "punta": [
+    "images/punta1.jpg",
+    "images/punta2.jpg",
+    "images/punta3.jpg",
+    "images/punta4.jpg"
+  ],
+  "alta": [
+    "images/alta1.jpg",
+    "images/alta2.jpg",
+    "images/alta3.jpg",
+    "images/alta4.jpg"
+  ]
+};
+
+function mostrarGaleria(destino) {
+  const galeria = document.getElementById("galeria-imagenes");
+  const titulo = document.getElementById("titulo-galeria");
+  galeria.innerHTML = "";
+  titulo.textContent = `Galería de ${destino.charAt(0).toUpperCase() + destino.slice(1)}`;
+
+  imagenesPorDestino[destino].forEach(ruta => {
+    const img = document.createElement("img");
+    img.src = ruta;
+    galeria.appendChild(img);
+  });
+
+  document.getElementById("galeria-modal").style.display = "flex";
+}
+
+function cerrarGaleria() {
+  document.getElementById("galeria-modal").style.display = "none";
+}
